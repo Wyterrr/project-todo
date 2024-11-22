@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <h1 class="app-title">Project ToDoList</h1>
+    <h6>By Wenene</h6>
     <form class="task-form" @submit.prevent="addTasks">
       <input v-model="newTask" type="text" placeholder="Insérer une tâche à faire" />
       <button :disabled="newTask.length === 0">Ajouter</button>
@@ -96,6 +97,10 @@ body {
   padding: 20px;
   background-color: #000;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+h6{
+  text-align: center;
 }
 
 .app-title {
