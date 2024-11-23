@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h1 class="app-title">Project ToDoList</h1>
-    <h6>By Wenene & Wyterrr</h6>
+    <h6>By Wenene</h6>
     <form class="task-form" @submit.prevent="addTasks">
       <input v-model="newTask" type="text" placeholder="Insérer une tâche à faire" />
       <button :disabled="newTask.length === 0">Ajouter</button>
@@ -81,7 +81,7 @@ const Pop = (newTask) => {
 <style>
 body {
   font-family: Arial, sans-serif;
-  background-color: #383232; 
+  background-color: #202020; 
   color: #fff;
   margin: 0;
   padding: 0;
