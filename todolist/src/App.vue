@@ -12,7 +12,7 @@
     <div v-else>
       <ul class="task-list">
         <li
-          v-for="newTask in sortedTasks()"
+          v-for="newTask in sortedTasks"
           :key="newTask.date"
           :class="{ completed: newTask.completed }"
         >
@@ -37,13 +37,14 @@
           <span></span>
         </div>
         Masquer les tâches complétées
+        <p v-if="remainingtasks > 0">{{ remainingtasks }} tâche{{ remainingtasks > 1 ? 's' : '' }} à faire</p>
       </label>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const tasks = ref([]);
 const hideCompleted = ref(false);
@@ -62,7 +63,8 @@ const deleteTask = (taskToDelete) => {
   tasks.value = tasks.value.filter((task) => task !== taskToDelete);
 };
 
-const sortedTasks = () => {
+const sortedTasks = computed(() => {
+  console.log('demo')
   const sortedTasks = tasks.value.toSorted((a, b) =>
     a.completed > b.completed ? 1 : -1
   );
@@ -70,11 +72,12 @@ const sortedTasks = () => {
     return sortedTasks.filter((t) => !t.completed);
   }
   return sortedTasks;
-};
+});
 
-const Pop = (newTask) => {
+const remainingtasks = computed(() => {
+  return tasks.value.filter(t => t.completed === false).length
+})
 
-}
 
 </script>
 
